@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday, Bhabi! 🐾💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Great+Vibes&family=Poppins:wght@300;400;600;800&family=Gochi+Hand&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg1: #ffe6f2; --bg2: #e6f0ff; --bg3: #fff5e6;
+  --pink: #ff8fab; --deep-pink: #fb6f92; --text: #4a3f55;
+  --glass: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --shadow: 0 20px 50px rgba(251, 111, 146, 0.15);
+  --smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
+body {
+  font-family: 'Poppins', sans-serif; overflow-x: hidden; color: var(--text);
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 400% 400%; animation: bgShift 20s ease infinite;
+  scroll-behavior: smooth;
+}
+@keyframes bgShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+/* --- Custom Cursor --- */
+.cursor-dot, .cursor-outline {
+  position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+  border-radius: 50%; z-index: 9999; pointer-events: none;
+  transition: width 0.3s var(--smooth), height 0.3s var(--smooth), background-color 0.3s var(--smooth);
+}
+.cursor-dot { width: 8px; height: 8px; background: var(--deep-pink); }
+.cursor-outline { width: 40px; height: 40px; border: 2px solid var(--deep-pink); }
+.cursor-outline.hover { width: 70px; height: 70px; background-color: rgba(251, 111, 146, 0.15); border-color: transparent; }
+
+/* --- Background Elements --- */
+.bg-el { position: fixed; pointer-events: none; z-index: 0; opacity: 0.6; animation: floatDown linear infinite; }
+@keyframes floatDown { from { transform: translateY(-10vh) rotate(0deg); } to { transform: translateY(110vh) rotate(360deg); } }
+
+/* --- Music Toggle --- */
+#music-toggle {
+  position: fixed; top: 15px; right: 15px; z-index: 9999;
+  background: white; border: 2px solid var(--deep-pink); color: var(--deep-pink);
+  padding: 8px 12px; border-radius: 30px; font-weight: 600; font-size: 0.8rem;
+  box-shadow: 0 5px 15px rgba(251,111,146,0.2); cursor: pointer;
+  transition: all 0.3s var(--smooth); display: none;
+}
+#music-toggle.show { display: block; animation: popIn 0.5s var(--smooth); }
+#music-toggle:hover { transform: scale(1.1); background: var(--bg1); }
+#music-toggle.playing { background: var(--deep-pink); color: white; }
+@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* --- Navigation --- */
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+  display: flex; justify-content: center; gap: 15px; z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03); transform: translateY(-100%);
+  transition: transform 0.6s var(--smooth);
+}
+nav.show { transform: translateY(0); }
+nav a {
+  text-decoration: none; color: var(--deep-pink); font-weight: 600;
+  font-size: 0.85rem; padding: 6px 12px; border-radius: 20px;
+  transition: all 0.4s var(--smooth); cursor: pointer;
+}
+nav a:hover { background: rgba(251, 111, 146, 0.1); transform: translateY(-2px); }
+
+/* --- Sections --- */
+.section {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 80px 15px;
+  position: relative; z-index: 10; text-align: center;
+}
+.glass-card {
+  background: var(--glass); backdrop-filter: blur(20px);
+  border: 2px solid var(--glass-border); border-radius: 25px;
+  box-shadow: var(--shadow); padding: 40px 25px; max-width: 95vw;
+  width: 100%; position: relative; overflow: hidden;
+}
+
+/* --- Typography & Buttons --- */
+.title { font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--deep-pink); margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(255,255,255,0.8); }
+.subtitle { font-size: 0.95rem; color: #7a6b85; margin-bottom: 20px; font-weight: 300; }
+.btn {
+  background: linear-gradient(135deg, #ffb3c6, #ff8fab); color: white;
+  border: none; padding: 14px 35px; border-radius: 50px;
+  font-size: 1rem; font-weight: 600; cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 143, 171, 0.4);
+  transition: all 0.5s var(--smooth);
+  position: relative; overflow: hidden; margin-top: 20px;
+}
+.btn:hover { transform: scale(1.05) translateY(-4px); box-shadow: 0 15px 35px rgba(255, 143, 171, 0.6); }
+.btn:active { transform: scale(0.96); }
+
+/* =========================================
+   INTRO SECTION
+   ========================================= */
+#s-intro .glass-card {
+  background: #fdfbf7;
+  background-image: linear-gradient(90deg, transparent 95%, #e0d6c8 95%), linear-gradient(#e0d6c8 1px, transparent 1px);
+  background-size: 100% 100%, 100% 30px;
+  border: 3px solid #e8d5d5; border-radius: 20px; position: relative;
+}
+#s-intro .glass-card::before {
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+  border-left: 2px dashed #ffb3c6;
+}
+.intro-header { font-family: 'Gochi Hand', cursive; font-size: 3.5rem; color: #c95266; text-shadow: 2px 2px 0px #ffd1dc; margin-bottom: 5px; transform: rotate(-3deg); animation: wiggle 3s ease-in-out infinite; }
+@keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(2deg); } }
+.intro-sub { font-family: 'Caveat', cursive; font-size: 1.8rem; color: #4a3f55; margin-bottom: 20px; line-height: 1.2; }
+.intro-sub span { font-style: italic; color: #fb6f92; font-size: 2rem; }
+.intro-puppy-svg { width: 130px; margin: 0 auto 10px; animation: floatPuppy 3s ease-in-out infinite; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); }
+@keyframes floatPuppy { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(3deg); } }
+.intro-btns { display: flex; gap: 15px; justify-content: center; margin-top: 20px; position: relative; }
+.btn-yes, .btn-no { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; font-weight: 600; padding: 10px 30px; border-radius: 30px; border: 3px solid white; cursor: pointer; box-shadow: 0 5px 0 rgba(0,0,0,0.1); transition: all 0.2s; }
+.btn-yes { background: #d8577a; color: white; }
+.btn-yes:hover { background: #fb6f92; transform: scale(1.1); }
+.btn-no { background: #d8577a; color: white; transition: all 0.3s var(--smooth); }
+
+/* =========================================
+   LETTER
+   ========================================= */
+.cat-mascot { width: 100px; margin: 0 auto 10px; animation: bounceCat 3s infinite ease-in-out; display: block; }
+@keyframes bounceCat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px) scale(1.05); } }
+.letter-content { font-family: 'Caveat', cursive; font-size: 1.4rem; line-height: 1.5; text-align: left; min-height: 200px; margin-top: 15px; }
+.letter-content p { margin-bottom: 12px; opacity: 0; transform: translateY(15px); animation: fadeUp 0.8s var(--smooth) forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.sig { text-align: right; font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--deep-pink); margin-top: 20px; opacity: 0; transition: opacity 1.5s var(--smooth); }
+.sig.show { opacity: 1; }
+
+/* =========================================
+   3D COVERFLOW SLIDER
+   ========================================= */
+.slider-container {
+  width: 100vw;
+  max-width: 100%;
+  padding: 40px 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+.slider-track {
+  display: flex;
+  gap: 15px;
+  padding: 0 calc(50vw - 90px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  transform-style: preserve-3d;
+}
+.slider-track::-webkit-scrollbar { display: none; }
+
+.polaroid {
+  background: white;
+  padding: 6px 6px 30px 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  width: 180px;
+  height: 220px;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.polaroid::before {
+  content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+  width: 60px; height: 20px; background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-left: 1px dashed rgba(0,0,0,0.1); border-right: 1px dashed rgba(0,0,0,0.1);
+}
+.polaroid img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; background: #f0d9cf; display: block; }
+
+.polaroid.prev-item { transform: rotateY(25deg) scale(0.85); box-shadow: -10px 10px 20px rgba(0,0,0,0.1); }
+.polaroid.next-item { transform: rotateY(-25deg) scale(0.85); box-shadow: 10px 10px 20px rgba(0,0,0,0.1); }
+.polaroid.active-item { transform: rotateY(0deg) scale(1.05); box-shadow: 0 15px 35px rgba(251,111,146,0.3); z-index: 10; }
+
+.swipe-hint {
+  font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--deep-pink);
+  margin-top: 10px; animation: pulseHint 2s infinite;
+}
+@keyframes pulseHint { 0%, 100% { opacity: 0.5; transform: translateX(0); } 50% { opacity: 1; transform: translateX(10px); } }
+
+/* =========================================
+   BOUQUETS
+   ========================================= */
+.bq-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+.bq { width: 90px; cursor: pointer; transition: all 0.6s var(--smooth); animation: float 4s infinite ease-in-out; position: relative; }
+.bq:nth-child(2) { animation-delay: 0.8s; } .bq:nth-child(3) { animation-delay: 1.6s; }
+.bq:hover { transform: scale(1.15) translateY(-10px); }
+.bq.opened { pointer-events: none; opacity: 0.4; transform: scale(0.9); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.bq-msg { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--deep-pink); margin-top: 20px; min-height: 50px; transition: all 0.5s var(--smooth); line-height: 1.3; }
+
+/* --- Secret Gift --- */
+.secret-gift { display: none; margin-top: 30px; animation: popIn 1s var(--smooth); }
+.secret-gift.show { display: block; }
+.gift-box { font-size: 4rem; cursor: pointer; animation: pulseGift 2s infinite ease-in-out; display: inline-block; }
+@keyframes pulseGift { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(10deg); } }
+
+/* --- Modal --- */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; opacity: 0; transition: opacity 0.4s var(--smooth); }
+.modal-overlay.on { display: flex; opacity: 1; }
+.modal-box { background: white; padding: 30px 20px; border-radius: 25px; max-width: 85vw; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.15); transform: scale(0.8); transition: transform 0.4s var(--smooth); }
+.modal-overlay.on .modal-box { transform: scale(1); }
+.modal-box h3 { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--deep-pink); margin-bottom: 15px; }
+.modal-box p { font-size: 1rem; line-height: 1.5; }
+.modal-box button { margin-top: 20px; background: var(--pink); color: white; border: none; padding: 10px 30px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s var(--smooth); }
+.modal-box button:hover { background: var(--deep-pink); transform: scale(1.05); }
+
+/* --- Confetti Canvas --- */
+#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
+
+@media (min-width: 600px) {
+  .title { font-size: 4rem; }
+  .letter-content { font-size: 1.6rem; }
+  .glass-card { padding: 50px 40px; }
+  .intro-header { font-size: 4.5rem; }
+  .intro-sub { font-size: 2.2rem; }
+  .intro-sub span { font-size: 2.5rem; }
+  .polaroid { width: 220px; height: 260px; }
+  .slider-track { padding: 0 calc(50vw - 110px); }
+  nav { padding: 15px; gap: 25px; }
+  nav a { font-size: 0.95rem; padding: 8px 15px; }
+  #music-toggle { top: 20px; right: 20px; padding: 10px 15px; font-size: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-outline" id="cursor-outline"></div>
+
+<!-- Music Toggle -->
+<button id="music-toggle" onclick="toggleMusic()">🎵 Play Music</button>
+
+<!-- Confetti Canvas -->
+<canvas id="confetti"></canvas>
+
+<!-- Background Elements -->
+<div id="bg-elements"></div>
+
+<!-- Navigation -->
+<nav id="nav">
+  <a onclick="scrollToSec('s-letter')">💌 Letter</a>
+  <a onclick="scrollToSec('s-gallery')">📸 Memories</a>
+  <a onclick="scrollToSec('s-bouquet')">💐 Bouquets</a>
+</nav>
+
+<!-- S0: INTRO -->
+<section class="section" id="s-intro">
+  <div class="glass-card">
+    <svg class="intro-puppy-svg" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="110" rx="55" ry="50" fill="#fff" stroke="#e0d6c8" stroke-width="3"/>
+      <ellipse cx="50" cy="90" rx="25" ry="40" fill="#f8f1e7" transform="rotate(-20 50 90)"/>
+      <ellipse cx="150" cy="90" rx="25" ry="40" fill="#f8f1e7" transform="rotate(20 150 90)"/>
+      <ellipse cx="100" cy="130" rx="30" ry="20" fill="#f8f1e7"/>
+      <circle cx="80" cy="100" r="8" fill="#4a3f55"/>
+      <circle cx="120" cy="100" r="8" fill="#4a3f55"/>
+      <circle cx="82" cy="98" r="3" fill="#fff"/>
+      <circle cx="122" cy="98" r="3" fill="#fff"/>
+      <ellipse cx="100" cy="120" rx="10" ry="6" fill="#4a3f55"/>
+      <path d="M100 126 Q100 135 90 135 M100 126 Q100 135 110 135" stroke="#4a3f55" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M95 145 Q100 150 105 145" stroke="#f48fb1" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="60" cy="120" rx="8" ry="5" fill="#ff8fab" opacity="0.6"/>
+      <ellipse cx="140" cy="120" rx="8" ry="5" fill="#ff8fab" opacity="0.6"/>
+      <g transform="translate(135, 135) rotate(-30)">
+        <path d="M0 20 L0 60" stroke="#8bc34a" stroke-width="4" fill="none"/>
+        <circle cx="0" cy="10" r="15" fill="#e53935"/>
+        <path d="M-10 5 Q0 -10 10 5 Q15 15 0 20 Q-15 15 -10 5" fill="#c62828"/>
+      </g>
+    </svg>
+
+    <div class="intro-header">HEY!!</div>
+    <div class="intro-sub">I made something <span>for you</span><br>Do you want to see?</div>
+
+    <div class="intro-btns">
+      <button class="btn-yes" onclick="startExperience()">Yes</button>
+      <button class="btn-no" id="btn-no" onmouseover="moveNoBtn()" onclick="moveNoBtn()">No</button>
+    </div>
+  </div>
+</section>
+
+<!-- S1: Letter -->
+<section class="section" id="s-letter" style="display:none;">
+  <div class="glass-card" style="text-align: left;">
+    <svg class="cat-mascot" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="140" rx="60" ry="45" fill="#fce4ec"/>
+      <circle cx="100" cy="90" r="50" fill="#fce4ec"/>
+      <path d="M60 50 L50 10 L85 40 Z" fill="#fce4ec"/><path d="M140 50 L150 10 L115 40 Z" fill="#fce4ec"/>
+      <path d="M65 45 L58 20 L80 40 Z" fill="#f8bbd0"/><path d="M135 45 L142 20 L120 40 Z" fill="#f8bbd0"/>
+      <circle cx="80" cy="85" r="6" fill="#4a3f55"/><circle cx="120" cy="85" r="6" fill="#4a3f55"/>
+      <circle cx="82" cy="83" r="2" fill="#fff"/><circle cx="122" cy="83" r="2" fill="#fff"/>
+      <path d="M95 95 Q100 100 105 95" stroke="#f48fb1" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M100 95 L100 105 M100 105 Q90 110 90 105 M100 105 Q110 110 110 105" stroke="#f48fb1" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="65" cy="95" rx="8" ry="5" fill="#ff8fab" opacity="0.4"/><ellipse cx="135" cy="95" rx="8" ry="5" fill="#ff8fab" opacity="0.4"/>
+      <ellipse cx="70" cy="160" rx="15" ry="10" fill="#fce4ec"/><ellipse cx="130" cy="160" rx="15" ry="10" fill="#fce4ec"/>
+      <rect x="75" y="140" width="50" height="40" fill="#ff8fab" rx="5"/><rect x="70" y="130" width="60" height="15" fill="#fb6f92" rx="3"/>
+      <rect x="95" y="140" width="10" height="40" fill="#fb6f92"/><path d="M100 130 Q85 110 95 120 Q100 125 100 130 Z" fill="#fff"/><path d="M100 130 Q115 110 105 120 Q100 125 100 130 Z" fill="#fff"/>
+    </svg>
+
+    <h1 class="title" style="text-align: center;">Dear <span class="nm"></span>,</h1>
+    <div class="letter-content" id="letter-text"></div>
+    <div class="sig" id="letter-sig">— Your Sister-in-Law 💖</div>
+  </div>
+  <button class="btn" onclick="scrollToSec('s-gallery')">Next Surprise ➜</button>
+</section>
+
+<!-- S2: 3D SLIDER GALLERY -->
+<section class="section" id="s-gallery" style="display:none; padding-left: 0; padding-right: 0;">
+  <h1 class="title" style="font-size: 2.5rem; margin-bottom: 5px;">Memories 📸</h1>
+
+  <div class="slider-container">
+    <div class="slider-track" id="gallery-container"></div>
+  </div>
+
+  <p class="swipe-hint">Swipe to slide ➜</p>
+
+  <button class="btn" onclick="scrollToSec('s-bouquet')" style="margin-top: 10px;">Next Surprise ➜</button>
+</section>
+
+<!-- S3: Bouquets -->
+<section class="section" id="s-bouquet" style="display:none;">
+  <div class="glass-card">
+    <h1 class="title" style="font-size: 2.2rem;">Pick a Bouquet 💐</h1>
+    <p class="subtitle">Tap one to read a little note</p>
+
+    <div class="bq-grid" id="bouquet-container"></div>
+
+    <div class="bq-msg" id="bq-msg"></div>
+
+    <div class="secret-gift" id="secret-gift">
+      <div class="gift-box" onclick="openSecretGift()">🎁</div>
+      <p class="subtitle" style="margin-top: 5px;">Tap the gift for a virtual hug!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <h3 id="modal-title">Message</h3>
+    <p id="modal-text"></p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+/* ========================================================
+   CONFIGURATION & TEXT (Humanized)
+   ======================================================== */
+const NAME = "Bhabi";
+
+const LETTER_LINES = [
+  "Happy Birthday! 🎂",
+  "I'm not the best at writing long emotional messages, but I really wanted to say this. You're not just my bhabi, you're genuinely family to me. I know I annoy you sometimes and make mistakes, but you've never held it against me. You always stay calm, explain things, and help me understand. Honestly, not a lot of people have that kind of patience.",
+  "You have such a warm vibe. Even when you're being a little childish (which is cute, by the way), you make the house feel so much warmer. You speak your mind, but you do it so sweetly that it never hurts anyone.",
+  "I notice the little things—the way you remember small details, check if everyone has eaten, or laugh at your own jokes before you even finish them. Those little things make you who you are.",
+  "Anyway, I just wanted to remind you how much you're appreciated. May God keep you happy and healthy, and may that smile never fade. 🤲",
+  "Love you, Bhabi. Happy Birthday! 🌸"
+];
+
+const PHOTOS = [
+  "https://i.postimg.cc/wxkYYSSp/Whats-App-Image-2026-11-06-at-9-10-35-PM.jpg",
+  "https://i.postimg.cc/pVBMMggx/Whats-App-Image-2026-11-06-at-9-11-17-PM.jpg",
+  "https://i.postimg.cc/Bbpr5Kxy/Whats-App-Image-2026-11-06-at-9-11-54-PM.jpg",
+  "https://i.postimg.cc/L5Dck1zw/Whats-App-Image-2026-11-06-at-9-13-30-PM.jpg",
+  "https://i.postimg.cc/CM4ppWWw/Whats-App-Image-2026-11-06-at-9-15-55-PM.jpg",
+  "https://i.postimg.cc/7PNrrppx/Whats-App-Image-2026-11-06-at-9-22-35-PM.jpg",
+  "https://i.postimg.cc/fWvQQ66W/Whats-App-Image-2026-11-06-at-9-29-31-PM.jpg",
+  "https://i.postimg.cc/v8vwwppY/Whats-App-Image-2026-11-06-at-9-33-08-PM.jpg",
+  "https://i.postimg.cc/v8vwwppH/Whats-App-Image-2026-11-06-at-9-42-19-PM.jpg"
+];
+
+const BOUQUETS = [
+  { color: "#fb6f92", msg: "I know I annoy you sometimes, but you're actually my favorite person. Happy Birthday! 🌹" },
+  { color: "#ff8fab", msg: "Thank you for always having my back and for being so patient with me. 🌸" },
+  { color: "#ffb3c6", msg: "Wishing you a year where you get everything you want. You deserve it all. 💖" }
+];
+
+/* ========================================================
+   HELPERS
+   ======================================================== */
+const $ = id => document.getElementById(id);
+document.querySelectorAll('.nm').forEach(el => el.textContent = NAME);
+
+/* ========================================================
+   CUSTOM CURSOR
+   ======================================================== */
+const cursorDot = $('cursor-dot');
+const cursorOutline = $('cursor-outline');
+let mouseX = 0, mouseY = 0;
+let outlineX = 0, outlineY = 0;
+
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursorDot.style.left = mouseX + 'px';
+  cursorDot.style.top = mouseY + 'px';
+  cursorDot.style.transform = 'translate(-50%, -50%)';
+});
+
+function animateCursor() {
+  outlineX += (mouseX - outlineX) * 0.15;
+  outlineY += (mouseY - outlineY) * 0.15;
+  cursorOutline.style.left = outlineX + 'px';
+  cursorOutline.style.top = outlineY + 'px';
+  cursorOutline.style.transform = 'translate(-50%, -50%)';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+function bindHover(el) {
+  el.addEventListener('mouseenter', () => cursorOutline.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover'));
+}
+document.querySelectorAll('button, a, .bq, .gift-box, .polaroid').forEach(bindHover);
+
+/* ========================================================
+   BACKGROUND ELEMENTS
+   ======================================================== */
+function spawnBgElement() {
+  const emojis = ['🐾', '✨', '🌸', '💖', '⭐', '🎀', '🦋'];
+  const el = document.createElement('div');
+  el.className = 'bg-el';
+  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.fontSize = (15 + Math.random() * 25) + 'px';
+  el.style.animationDuration = (10 + Math.random() * 10) + 's';
+  $('bg-elements').appendChild(el);
+  setTimeout(() => el.remove(), 20000);
+}
+setInterval(spawnBgElement, 600);
+
+/* ========================================================
+   MUSIC PLAYER
+   ======================================================== */
+const audio = new Audio();
+audio.src = "https://files.catbox.moe/up7tdk.mp3";
+audio.loop = true;
+
+function toggleMusic() {
+  const btn = $('music-toggle');
+  if (audio.paused) {
+    audio.play().catch(e => console.log("Audio play failed:", e));
+    btn.classList.add('playing');
+    btn.textContent = "🎵 Music On";
+  } else {
+    audio.pause();
+    btn.classList.remove('playing');
+    btn.textContent = "🎵 Play Music";
+  }
+}
+
+/* ========================================================
+   INTRO "NO" BUTTON GAME
+   ======================================================== */
+function moveNoBtn() {
+  const btn = $('btn-no');
+  const x = (Math.random() - 0.5) * 150;
+  const y = (Math.random() - 0.5) * 80;
+  btn.style.transform = `translate(${x}px, ${y}px) scale(0.9)`;
+  setTimeout(() => { btn.style.transform = `translate(${x * 0.8}px, ${y * 0.8}px) scale(0.95)`; }, 200);
+}
+
+/* ========================================================
+   NAVIGATION & FLOW
+   ======================================================== */
+function scrollToSec(id) {
+  const el = $(id);
+  if (!el) return;
+  el.style.display = 'flex';
+  el.scrollIntoView({ behavior: 'smooth' });
+  if (id === 's-letter') startTypewriter();
+  if (id === 's-gallery') setupSlider();
+  if (id === 's-bouquet') renderBouquets();
+  $('nav').classList.add('show');
+  $('music-toggle').classList.add('show');
+
+  if (audio.paused) toggleMusic();
+}
+
+function startExperience() {
+  createConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, 50);
+  scrollToSec('s-letter');
+}
+
+/* ========================================================
+   TYPEWRITER LETTER
+   ======================================================== */
+let typewriterStarted = false;
+function startTypewriter() {
+  if (typewriterStarted) return;
+  typewriterStarted = true;
+
+  const el = $('letter-text');
+  el.innerHTML = '';
+  let i = 0;
+
+  function nextLine() {
+    if (i >= LETTER_LINES.length) {
+      $('letter-sig').classList.add('show');
+      return;
+    }
+    const p = document.createElement('p');
+    p.textContent = LETTER_LINES[i];
+    el.appendChild(p);
+    i++;
+    setTimeout(nextLine, 900);
+  }
+  nextLine();
+}
+
+/* ========================================================
+   3D SLIDER GALLERY (no loop, scroll-snap)
+   ======================================================== */
+let sliderReady = false;
+
+function setupSlider() {
+  if (sliderReady) return;
+  sliderReady = true;
+
+  const track = $('gallery-container');
+  track.innerHTML = '';
+
+  PHOTOS.forEach((src) => {
+    const card = document.createElement('div');
+    card.className = 'polaroid';
+    const img = document.createElement('img');
+    img.src = src;
+    img.loading = 'lazy';
+    img.alt = 'Memory';
+    card.appendChild(img);
+    track.appendChild(card);
+    bindHover(card);
+  });
+
+  function updateActive() {
+    const cards = Array.from(track.children);
+    const trackRect = track.getBoundingClientRect();
+    const centerX = trackRect.left + trackRect.width / 2;
+
+    let closest = null;
+    let closestDist = Infinity;
+
+    cards.forEach((card) => {
+      card.classList.remove('prev-item', 'next-item', 'active-item');
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const dist = Math.abs(cardCenter - centerX);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = card;
+      }
+    });
+
+    if (closest) {
+      const idx = cards.indexOf(closest);
+      closest.classList.add('active-item');
+      if (cards[idx - 1]) cards[idx - 1].classList.add('prev-item');
+      if (cards[idx + 1]) cards[idx + 1].classList.add('next-item');
+    }
+  }
+
+  track.addEventListener('scroll', () => {
+    window.requestAnimationFrame(updateActive);
+  }, { passive: true });
+
+  setTimeout(() => {
+    const first = track.children[0];
+    if (first) {
+      const cardCenter = first.offsetLeft + first.offsetWidth / 2;
+      track.scrollLeft = cardCenter - track.clientWidth / 2;
+    }
+    updateActive();
+  }, 100);
+
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(updateActive);
+  });
+}
+
+/* ========================================================
+   BOUQUETS
+   ======================================================== */
+let bouquetsRendered = false;
+function renderBouquets() {
+  if (bouquetsRendered) return;
+  bouquetsRendered = true;
+
+  const container = $('bouquet-container');
+  container.innerHTML = '';
+
+  BOUQUETS.forEach((bq) => {
+    const div = document.createElement('div');
+    div.className = 'bq';
+    div.innerHTML = `
+      <svg viewBox="0 0 100 120" width="100%">
+        <path d="M50 60 L50 110" stroke="#8bc34a" stroke-width="4" fill="none"/>
+        <path d="M50 80 Q35 70 30 85 Q40 95 50 85" fill="#a5d6a7"/>
+        <path d="M50 90 Q65 80 70 95 Q60 105 50 95" fill="#a5d6a7"/>
+        <circle cx="50" cy="40" r="18" fill="${bq.color}"/>
+        <circle cx="38" cy="35" r="12" fill="${bq.color}" opacity="0.9"/>
+        <circle cx="62" cy="35" r="12" fill="${bq.color}" opacity="0.9"/>
+        <circle cx="50" cy="25" r="10" fill="${bq.color}" opacity="0.8"/>
+        <circle cx="50" cy="40" r="6" fill="#fff" opacity="0.6"/>
+        <rect x="40" y="70" width="20" height="20" fill="#ff8fab" rx="4"/>
+        <path d="M50 70 L50 90 M40 80 L60 80" stroke="#fff" stroke-width="1.5"/>
+      </svg>
+    `;
+    div.addEventListener('click', () => {
+      div.classList.add('opened');
+      $('bq-msg').textContent = bq.msg;
+      createConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.6, 20);
+      $('secret-gift').classList.add('show');
+    });
+    bindHover(div);
+    container.appendChild(div);
+  });
+}
+
+/* ========================================================
+   SECRET GIFT & MODAL
+   ======================================================== */
+function openSecretGift() {
+  createConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, 80);
+  showModal("A Big Hug! 🤗", "Sending you the warmest, tightest virtual hug. May your day be as sweet as you are. 💖🎂");
+}
+
+function showModal(title, text) {
+  $('modal-title').textContent = title;
+  $('modal-text').textContent = text;
+  $('modal').classList.add('on');
+}
+
+function closeModal() {
+  $('modal').classList.remove('on');
+}
+
+$('modal').addEventListener('click', (e) => {
+  if (e.target === $('modal')) closeModal();
+});
+
+/* ========================================================
+   CONFETTI (lightweight)
+   ======================================================== */
+const canvas = $('confetti');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function createConfettiBurst(x, y, count) {
+  const colors = ['#fb6f92', '#ff8fab', '#ffb3c6', '#ffd1dc', '#ffe6f2', '#ffc107', '#e91e63'];
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 3 + Math.random() * 8;
+    particles.push({
+      x: x, y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 2,
+      size: 4 + Math.random() * 6,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life: 1,
+      decay: 0.01 + Math.random() * 0.02,
+      rotation: Math.random() * Math.PI * 2,
+      rotationSpeed: (Math.random() - 0.5) * 0.2
+    });
+  }
+}
+
+function drawConfetti() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles = particles.filter(p => p.life > 0);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.15;
+    p.vx *= 0.99;
+    p.life -= p.decay;
+    p.rotation += p.rotationSpeed;
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(p.life, 0);
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rotation);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+    ctx.restore();
+  });
+
+  requestAnimationFrame(drawConfetti);
+}
+drawConfetti();
+</script>
+</body>
+</html>
